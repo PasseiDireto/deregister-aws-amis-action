@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: deregister-aws-amis-action
+  description: GitHub Action that deregisters AMIs older than a custom age that matches a given name filter.
+  labels:
+    system: github-actions
+  annotations:
+    github.com/project-slug: PasseiDireto/deregister-aws-amis-action
+    backstage.io/github-actions-id: PasseiDireto/deregister-aws-amis-action
+  tags:
+    - python
+    - action
+spec:
+  type: library
+  lifecycle: production
+  owner: data
