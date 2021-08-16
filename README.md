@@ -34,7 +34,7 @@ The most common use case is to schedule this action to run periodically, allowin
 
 ## Contributing
 
-PRs welcome! This action is a Docker container, so it is very easy run it locally. Be sure you have all the required inputs represented as envrionment variables. For instance you will need a `INPUT_NAME_FILTER` to represent the input `name_filter` the action will actually pass. Note the `INPUT_` preffix and the camel case representation.
+PRs welcome! This action is a Docker container, so it is very easy run it locally. Be sure you have all the required inputs represented as envrionment variables. For instance you will need a `INPUT_NAME_FILTER` to represent the input `name_filter` the action will actually pass. Note the `INPUT_` preffix and the upper case representation.
 
 ### Development guide
 Be sure you have Python 3.9, otherwise Make won't run as it should. An easy solution is to run `make` commands inside a Docker container.
@@ -53,8 +53,10 @@ docker build -t deregister-aws-amis-action .
 Have an [env file](https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file) ready with all the variables you need, such as:
 
 ```shell script
-
-
+INPUT_NAME_FILTER=abc*
+INPUT_MAX_AGE=60
+INPUT_SET_DEPRECATION_DATE=true
+INPUT_OWNER=01234567890
 ```
 
 You can name it `.env` and then run it the freshly built image:
@@ -63,13 +65,11 @@ You can name it `.env` and then run it the freshly built image:
 docker run --rm --env-file=.env deregister-aws-amis-action
 ```
 
-
 ### Before you commit
 
 Be sure all the tests and all the checks are passing:
-```sh
+```shell script
 pip install -r requirements/all.txt
 make # run all checks
 make tests # run all tests
-
 ```

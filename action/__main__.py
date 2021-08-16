@@ -1,5 +1,5 @@
 """
-Add a TCP Ingress rule to a AWS Security Group
+Deregister AMIs older than a custom age that matches a given name filter
 """
 import os
 from typing import List, Tuple
@@ -18,7 +18,7 @@ def handle_images(
     """
     Remove (deregister) or deprecate AMIs based on `max_age` and `set_deprecation_date`
     :param set_deprecation_date: Whether to set a deprecation date based on `max_age` on AMIs
-     that where found but but are not yet eligible for removal
+     that where found but are not yet eligible for removal
     :param max_age: Maximum number of days an AMI should exist. Images older than `max_age` days will be removed
     :param images: List of images filtered and eligible for removal/deprecation (if applicable)
     :return: a tuple with two lists: (images_to_remove, images_to_deprecate)
