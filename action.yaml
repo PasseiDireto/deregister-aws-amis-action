@@ -1,0 +1,19 @@
+name: 'Deregisters AWS AMIs'
+description: 'Deregister AMIs older than a custom age that matches a given name filter'
+inputs:
+  name_filter:
+    description: 'The name of the AMIs to be removed. Filters (such as `image-*-dev` are allowed)'
+    required: true
+  max_age:
+    description: 'The deregistration threshold, in days: older AMIs will be removed'
+    required: true
+  owner:
+    description: 'AWS Account ID owner'
+    required: true
+  set_deprecation_date:
+    description: 'Set the expected removal date as "deprecation date" on images that matche the "name_filter" but are not ready to be removed just yet'
+    required: false
+    default: true
+runs:
+  using: 'docker'
+  image: 'docker://passeidireto/deregister-aws-amis-action'
